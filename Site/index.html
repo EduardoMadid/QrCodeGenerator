@@ -7,8 +7,8 @@
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-gray-600 flex justify-center items-center h-screen">
-    <style>
 
+    <style>
         @keyframes shake {
             0%, 100% {
                 transform: translateX(0);
@@ -33,11 +33,11 @@
         <p class="font-semibold text-sm mb-2">Enter your text or URL</p>
         <input type="text" placeholder="Text or URL" id="qrText" class="w-full h-12 border border-indigo-500 outline-none p-2 mb-5 rounded-md">
         
-        <div id="imgBox" class="flex w-52 mx-auto rounded-md max-h-0 overflow-hidden transition-[max-height] duration-1000 ease-in-out">
-            <img src="" id="qrImage" class="w-full p-2 mx-auto justify-center">
+        <div id="imgBox" class="w-52 rounded-md max-h-0 overflow-hidden transition-[max-height] duration-1000 ease-in-out">
+            <img src="" id="qrImage" class="w-full p-2 mx-auto">
         </div>
 
-        <button onclick="GenerateQR()" class="w-full h-12 bg-indigo-500 text-white rounded-md shadow-md cursor-pointer mt-3 font-medium transition-colors duration-300 hover:bg-indigo-700">
+        <button onClick="GenerateQR()" class="w-full h-12 bg-indigo-500 text-white rounded-md shadow-md cursor-pointer mt-3 font-medium transition-colors duration-300 hover:bg-indigo-700">
             Generate QR Code
         </button>
     </div>
