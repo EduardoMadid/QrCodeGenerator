@@ -38,57 +38,107 @@ Agora que o básico foi feito e explicado vamos comecar pelo código HTML!
   <script src="https://cdn.tailwindcss.com"></script>
   ```
 
-- ``3.``
+- ``3.`` Crie a estrutura simples do site!
 
+```html
+<body>
+    <div >
+        <p >Enter your text or URL</p>
+        <input type="text" placeholder="Text or URL" id="qrText">
+        
+        <div id="imgBox">
+            <img src="" id="qrImage">
+        </div>
 
+        <button onClick="GenerateQR()">
+            Generate QR Code
+        </button>
+    </div>
 
+    <script src="./script.js"></script>
+</body>
+```
 
+- ``4.`` Estilize usando Taliwind.css
+  
+```html
+<body class="bg-gray-600 flex justify-center items-center h-screen">
 
+    <style>
+        @keyframes shake {
+            0%, 100% {
+                transform: translateX(0);
+            }
+            25% {
+                transform: translateX(-2px);
+            }
+            50% {
+                transform: translateX(2px);
+            }
+            75% {
+                transform: translateX(-2px);
+            }
+        }
 
+        .animate-shake {
+            animation: shake 0.5s linear;
+        }
+    </style>
 
+    <div class="w-3/5 p-6 bg-white rounded-lg">
+        <p class="font-semibold text-sm mb-2">Enter your text or URL</p>
+        <input type="text" placeholder="Text or URL" id="qrText" class="w-full h-12 border border-indigo-500 outline-none p-2 mb-5 rounded-md">
+        
+        <div id="imgBox" class="w-52 mx-auto rounded-md max-h-0 overflow-hidden transition-[max-height] duration-1000 ease-in-out">
+            <img src="" id="qrImage" class="w-full p-2 mx-auto">
+        </div>
 
+        <button onClick="GenerateQR()" class="w-full h-12 bg-indigo-500 text-white rounded-md shadow-md cursor-pointer mt-3 font-medium transition-colors duration-300 hover:bg-indigo-700">
+            Generate QR Code
+        </button>
+    </div>
 
+    <script src="./script.js"></script>
+</body>
+```
 
+Agora vamos a criar a funcao do botão
 
+- ``5.`` Crie o arquivo script.js e crie a função do botão.
 
+```js
+function GenerateQR() {
+    const qrText = document.getElementById("qrText");
+    const qrImage = document.getElementById("qrImage");
+    const imgBox = document.getElementById("imgBox");
 
+    // Remove shake class if it's already present
+    qrText.classList.remove("animate-shake");
 
+    if (qrText.value) {
+        const qrUrl = `https://api.qrserver.com/v1/create-qr-code/?data=${encodeURIComponent(qrText.value)}&size=200x200`;
+        qrImage.src = qrUrl;
 
+        // Exibe a imagem
+        imgBox.classList.add("max-h-60");
+    } else {
+        // Adiciona a classe de animação de shake
+        qrText.classList.add("animate-shake");
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        // Remove a classe após a animação para que possa ser usada novamente
+        setTimeout(() => {
+            qrText.classList.remove("animate-shake");
+        }, 500); // Duração do shake em milissegundos
+    }
+}
+```
+- Os 3 primeiros ``const`` são as váriaveis presentes HTML, sendo buscadas pelo seu ID, que são respectivamente o valor do input( a URL ou o Texto), a imagem do QrCode, e a ``div`` do QrCode.
+- Depois removemos a classe de ``.animate-shake`` do qrText.
+- Se o valor do input não for vazio, a gente pega usando a API de QrCode com o valor do input (urlDaAPI + input).
+  - Coloca a imagem no src da imagem no HTML.
+  - Coloca a classe para aumentar a altura do container do QrCode.
+- Se o input tiver vazio
+  - Adiciona ao input a animação de shake por um tempo de 500ms
 
 
 
