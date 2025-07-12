@@ -2,7 +2,7 @@
 
 A ideia principal desse projeto é entender ``como funcionam os QrCodes``!
 
-***Lembrando que existem diversas maneiras de realizar o que foi feito e eu estou trzendo apenas duas soluções!***
+***Lembrando que existem diversas maneiras de realizar o que foi feito e eu estou trazendo apenas duas soluções!***
 
 ### Breve Explicação
 
